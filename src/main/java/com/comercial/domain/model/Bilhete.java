@@ -33,4 +33,29 @@ public class Bilhete
 	@JoinColumn(name = "codigo_voo")
 	private Voo voo;
 
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public LocalDate getDataReserva() {
+		return dataReserva;
+	}
+
+	public void setDataReserva(LocalDate dataReserva) {
+		this.dataReserva = dataReserva;
+	}
+
+	public Voo getVoo() {
+		return voo;
+	}
+
+	public void setVoo(Voo voo) {
+		this.voo = voo;
+	}
+	
+
 }

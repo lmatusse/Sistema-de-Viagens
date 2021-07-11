@@ -1,9 +1,12 @@
 package com.comercial.domain.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,9 +23,35 @@ import lombok.Setter;
 		@EqualsAndHashCode.Include
 		private Long codigo;
 		
-		private String origem;
+		private String nome;
 		
-		private String destino;
+		@ManyToMany(mappedBy="provincia")
+		private List <Voo> voo;
+
+		public Long getCodigo() {
+			return codigo;
+		}
+
+		public void setCodigo(Long codigo) {
+			this.codigo = codigo;
+		}
+
+		public String getNome() {
+			return nome;
+		}
+
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+
+		public List<Voo> getVoo() {
+			return voo;
+		}
+
+		public void setVoo(List<Voo> voo) {
+			this.voo = voo;
+		}
+		
 		
 		
 }

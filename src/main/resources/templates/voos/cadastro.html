@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}"
+	layout:decorate="~{adminlayout}"
 	>
 	<head>
 		<title>Cadastro de clientes</title>
 	</head>
 	<body>
-		<section layout:fragment="conteudo">
+		<section layout:fragment="corpo">
 			<div class="container mt-4">
 				<div th:replace="fragments/mensagemSucesso.html :: alert"></div>
 				<div class="row">
@@ -31,31 +31,27 @@
 								<div class="row mt-3">
 								<div class="col-sm-12 col-md-4">
 									<label for="origem" class="form-label">Origem</label>
-									<select class="form-control" id="origem" th:field="*{origem}">
-										<option value="">Selecione a origem</option>
-										<option value="Maputo">Maputo</option>
-										<option value="Beira">Beira</option>
-										<option value="Tete">Tete</option>
-										<option value="Nampula">Nampula</option>
-										<option value="Nacala">Nacala</option>
-										<option value="Pemba">Pemba</option>
+									<select class="form-control" id="origem" th:field="${voo.provincia}">
+										<option value="">Selecione a Origem</option>
+										<option th:each="ca: ${provincias}"
+										th:value="${ca.codigo}"
+										th:text="${ca.nome}">
+										</option>
 									</select>
 								</div>
-								</div>
+							</div>
 								<div class="row mt-3">
 								<div class="col-sm-12 col-md-4">
-									<label for="desino" class="form-label">Destino</label>
-									<select class="form-control" id="destino" th:field="*{destino}">
-										<option value="">Selecione o destino</option>
-										<option value="Maputo">Maputo</option>
-										<option value="Beira">Beira</option>
-										<option value="Tete">Tete</option>
-										<option value="Nampula">Nampula</option>
-										<option value="Nacala">Nacala</option>
-										<option value="Pemba">Pemba</option>
+									<label for="destino" class="form-label">Destino</label>
+									<select class="form-control" id="destino" th:field="${voo.provincia}">
+										<option value="">Selecione o Destino</option>
+										<option th:each="ca: ${provincias}"
+										th:value="${ca.codigo}"
+										th:text="${ca.nome}">
+										</option>
 									</select>
 								</div>
-								</div>
+							</div>
 								<div class="col-sm-12 col-md-4">
 									<label for="hora_partida">Hora de Partida</label>
 									<input type="time" class="form-control" id="hora_partida" th:field="*{horaPartida}"/>
@@ -73,7 +69,7 @@
 										<option value="">Selecione a aeronave</option>
 										<option th:each="ca: ${aeronaves}"
 										th:value="${ca.codigo}"
-										th:text="${ca.nome}">
+										th:text="${ca.referencia}">
 										</option>
 									</select>
 								</div>

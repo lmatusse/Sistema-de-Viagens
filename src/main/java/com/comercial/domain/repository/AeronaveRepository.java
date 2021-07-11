@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.comercial.domain.model.Aeronave;
 
 @Repository
-public interface AeronavaRepository extends JpaRepository<Aeronave, Long>{
+public interface AeronaveRepository extends JpaRepository<Aeronave, Long>{
 
 }

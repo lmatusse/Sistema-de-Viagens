@@ -9,33 +9,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.comercial.domain.model.Aeronave;
-import com.comercial.domain.repository.AeronavaRepository;
+import com.comercial.domain.repository.AeronaveRepository;
 
 @Service
 public class AeronaveService 
 {
 	@Autowired
-	private AeronavaRepository aeronavaRepository;
+	private AeronaveRepository aeronaveRepository;
 	
 	@Transactional
 	public Aeronave salvar(Aeronave aeronave)
 	{
-		return aeronavaRepository.save(aeronave);
+		return aeronaveRepository.save(aeronave);
 	}
 	
 	public Optional<Aeronave> buscar(Long codigo)
 	{
-		return aeronavaRepository.findById(codigo);
+		return aeronaveRepository.findById(codigo);
 	}
 	
 	public List<Aeronave> listar()
 	{
-		return aeronavaRepository.findAll();
+		return aeronaveRepository.findAll();
 	}
 	
 	@Transactional
 	public void remover(Long codigo)
 	{
-		aeronavaRepository.deleteById(codigo);
+		aeronaveRepository.deleteById(codigo);
 	}
 }

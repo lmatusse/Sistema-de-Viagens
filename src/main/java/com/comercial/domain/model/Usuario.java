@@ -15,18 +15,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class CompanhiaAerea 
+public class Usuario 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
 	private Long codigo;
 	
-	private String nome;
+	private String user;
+	
+	private String senha;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_nacionalidade", nullable = false)
-	private Nacionalidade nacionalidade;
+	@JoinColumn(name = "codigo_perfil", nullable = false)
+	private Perfil perfil;
 
 	public Long getCodigo() {
 		return codigo;
@@ -36,20 +38,28 @@ public class CompanhiaAerea
 		this.codigo = codigo;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getUser() {
+		return user;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
-	public Nacionalidade getNacionalidade() {
-		return nacionalidade;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setNacionalidade(Nacionalidade nacionalidade) {
-		this.nacionalidade = nacionalidade;
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 	
 }

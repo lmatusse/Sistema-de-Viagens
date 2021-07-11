@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div class="container-fluid text-right social-head" th:fragment="social" >
+<div class="container-fluid text-right social-head " th:fragment="social" >
    <span class="text-ujc-blue social-info">
     <i class="fas fa-phone"></i>
     <span class="text-white">+258 21 900 068</span>
@@ -33,8 +33,8 @@
   
 </div>
 
-
-		<nav class="navbar navbar-expand-lg navbar-dark mt-2 mt-md-0 ms-md-auto " th:fragment="navbar">
+<header th:fragment="cabecalho">
+<nav class="navbar navbar-expand-lg navbar-dark mt-2 mt-md-0 ms-md-auto ">
 			<div class="container">
 				<a th:href="@{/}" class="navbar-brand content-ll"><strong>ViajaNet</strong></a>
 				<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
@@ -48,7 +48,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle text-white"role="button" data-bs-toggle="dropdown" th:href="@{#}">Reservas</a>
 							<ul class="dropdown-menu">
-								<li ><a class="dropdown-item text-dark" th:href="@{/bilhetes}">Bilhete</a></li>
+								<li ><a class="dropdown-item text-dark" th:href="@{/bilhetes/novo}">Bilhete</a></li>
 								<li><a class="dropdown-item text-dark" th:href="@{/funcionarios}">Hotel</a>
 							</ul>
 						</li>
@@ -65,7 +65,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right  ">
       <li>
-      <a class="perfil" href="#">
+      <a class="perfil" href="login.html">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
   	  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
 	  </svg>
@@ -81,4 +81,6 @@
 				</div>
 			</div>
 		</nav>
+</header>
+		
 </html>

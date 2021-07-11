@@ -29,4 +29,37 @@ public class Aeronave
 	@ManyToOne
 	@JoinColumn(name = "codigo_companhia_area")
 	private CompanhiaAerea companhiaAerea;
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getReferencia() {
+		return referencia;
+	}
+
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+
+	public Integer getCapacidade() {
+		return capacidade;
+	}
+
+	public void setCapacidade(Integer capacidade) {
+		this.capacidade = capacidade;
+	}
+
+	public CompanhiaAerea getCompanhiaAerea() {
+		return companhiaAerea;
+	}
+
+	public void setCompanhiaAerea(CompanhiaAerea companhiaAerea) {
+		this.companhiaAerea = companhiaAerea;
+	}
+	
 }

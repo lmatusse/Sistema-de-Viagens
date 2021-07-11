@@ -32,6 +32,10 @@ public class CompanhiaAereaService
 	{
 		return companhiaAereaRepository.findAll();
 	}
+	public List<CompanhiaAerea> pesquisarNome(String nome)
+	{
+		return companhiaAereaRepository.findCaByName(nome);
+	}
 	
 	@Transactional
 	public void remove(Long codigo)

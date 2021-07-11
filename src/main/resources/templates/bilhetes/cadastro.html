@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}"
+	layout:decorate="~{layout}"
 	>
 	<head>
 		<title>Cadastro de Reservas</title>
 	</head>
 	<body>
-		<section layout:fragment="conteudo">
+		<section class="content" layout:fragment="corpo">
 			<div class="container mt-4">
 				<div th:replace="fragments/mensagemSucesso.html :: alert"></div>
 				<div class="row">
@@ -21,29 +21,41 @@
 				<hr>
 				<div class="card">
 					<div class="card-body">
-						<form th:object="${bilhete}" method="post" th:action="@{/bilhetes/novo}">
-							<input type="hidden" th:field="*{codigo}"/>
+						<form th:object="${bilhete}" method="post" th:action="@{/clientes/novo}">
 							<div class="row">
 									<input type="hidden"  th:field="*{dataReserva}">
 								
-								<div class="col-sm-12 col-md-4">
-									<label for="codigo_cliente">Informe o codigo do cliente</label>
-									<input type="text" class="form-control" id="codigo_cliente" th:field="${bilhete.cliente}"/>
-								</div>
 							</div>
-							<div class="row mt-3">
-								<div class="col-sm-12 col-md-4">
-									<label for="voo" class="form-label">Voo's disponiveis</label>
-									<select class="form-control" id="voo" th:field="${bilhete.voo}">
-										<option value="">Selecione o voo</option>
-										<option th:each="ca: ${voos}"
-										th:value="${ca.codigo}"
-										th:text="${ca.origem}+'-'+${ca.destino}+'-'+${ca.data}+'-'+${ca.horaPartida}+'-'+${ca.horaChegada}">
-										</option>
-									</select>
-								</div>
-							</div>
-							<button type="submit" class="btn btn-primary mt-4">Cadastar <i class="fa fa-user-plus"></i></button>
+				<hr>
+				<table class="table table-stripped table-bordered">
+					<tr>
+						<th class="col-1">Codigo</th>
+						<th class="col-2">Data</th>
+						<th class="col-2">Origem-Destino</th>
+						<th class="col-1">Hora de Partida</th>
+						<th class="col-1">Hora de Chegada</th>
+						<th class="col-1">Preco</th>
+						<th class="col-2">Aeronave</th>
+						<th class="col-2 text-center"><i class="fa fa-cogs"></i></th>
+					</tr>
+					<tr th:each="voo: ${voos}">
+						<td th:text="${voo.codigo}"></td>
+						<td th:text="${voo.data}"></td>
+						<td>
+							<Span th:each="provincia: ${voo.provincia}">
+								<Span th:text="${provincia.nome}"></Span>
+							</Span>
+						</td>
+						<td th:text="${voo.horaPartida}"></td>
+						<td th:text="${voo.horaChegada}"></td>
+						<td th:text="${voo.preco}"></td>
+						<td th:text="${voo.aeronave?.referencia}"></td>
+						<td class="text-center">
+						
+							<a th:href="@{/clientes/{codigo}(codigo = ${voo.codigo})}" data-bs-toggle="tooltip" data-bs-placement="left" title="Reservar"><i class="fa fa-user-edit"></i></a> 
+						</td> 
+					</tr>
+				</table>
 						</form>
 					</div>
 				</div>

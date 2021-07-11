@@ -11,7 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.comercial.domain.model.Voo;
-import com.comercial.domain.service.CompanhiaAereaService;
+import com.comercial.domain.service.AeronaveService;
+import com.comercial.domain.service.ProvinciaService;
 import com.comercial.domain.service.VooService;
 
 
@@ -23,12 +24,17 @@ public class VooController
 	@Autowired
 	private VooService vooService;
 	@Autowired
-	private CompanhiaAereaService aeronaveService;
+	private AeronaveService aeronaveService;
+	@Autowired
+	private ProvinciaService provinciaService;
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Voo voo)
 	{
-		return new ModelAndView("voos/cadastro").addObject("aeronaves",aeronaveService.listar());
+		ModelAndView modelAndView= new ModelAndView("voos/cadastro");
+		modelAndView.addObject("provincias", provinciaService.listar());
+		modelAndView.addObject("aeronaves",aeronaveService.listar());
+		return modelAndView;
 	}
 	
 	@PostMapping("/novo")

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}"
+	layout:decorate="~{adminlayout}"
 	>
 	<head>
 		<title>Cadastro de Companhias aereas</title>
 	</head>
 	<body>
-		<section layout:fragment="conteudo">
+		<section layout:fragment="corpo">
 			<div class="container mt-4">
 				<div th:replace="fragments/mensagemSucesso.html :: alert"></div>
 				<div class="row">
@@ -27,10 +27,16 @@
 								<div class="col-sm-12 col-md-8">
 									<label for="nome" class="form-label">Nome</label>
 									<input type="text" class="form-control" id="nome" th:field="*{nome}">
-								</div>
+								</div><div class="row mt-8">
 								<div class="col-sm-12 col-md-4">
-									<label for="paisOrigem">Pais de Origem</label>
-									<input type="text" class="form-control" id="paisOrigem" th:field="*{paisOrigem}"/>
+									<label for="nacionalidade" class="form-label">Pais de Origem</label>
+									<select class="form-control" id="nacionalidade" th:field="${companhiaAerea.nacionalidade}">
+										<option value="">Selecione o Pais</option>
+										<option th:each="ca: ${nacionalidades}"
+										th:value="${ca.codigo}"
+										th:text="${ca.nome}">
+										</option>
+									</select>
 								</div>
 							</div>
 							
